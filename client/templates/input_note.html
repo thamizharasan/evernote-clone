@@ -1,0 +1,64 @@
+<template name="input_note">
+  <div class="container">
+    {{#if currentUser}}
+      <div class="row">
+        <div class="col-sm-4 col-md-4">
+          {{> input_form}}
+        </div>
+        <div class="col-sm-8 col-md-8">
+          {{> tag_cloud}}
+        </div>
+      </div>
+    {{else}}
+      <div class="well well-sm signIn" style="margin-top: 5px"> Sign in to keep posting</div>
+      <div class="row">
+        <div class="col-sm-12 col-md-12">
+          {{> tag_cloud}}
+        </div>
+      </div>
+    {{/if}}
+  </div>
+</template>
+
+<template name="input_form">
+  <div class="panel panel-default shadow">
+    <div class="panel-heading notePanelTitle">Enter Note Details</div>
+    <div class="panel-body">
+      <form data-role="form">
+        <div class="form-group">
+
+          <textarea id="noteText" class="form-control " cols="3" rows="4"
+                    placeholder="Enter the note details"></textarea>
+
+          <div class="tags" style="margin-top: 5px">
+            <input id="noteTag" type="text" data-role="tagsinput"
+                   class="form-control bootstrap-tagsinput-max"
+                   placeholder="Type a tag and hit enter ">
+          </div>
+          <a id='btn' class="btn btn-default btn-block" type="button">Submit</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</template>
+
+<template name="tag_cloud">
+  <div class="panel panel-default shadow">
+    <div class="panel-heading tgCloud">Tag Cloud</div>
+    <div class="panel-body">
+      {{#each availableTags}}
+        <span class="small" style="margin-left: 5px">
+            <a href="#" class="btn btn-default btn-xs tgname" role="button">
+              <span class="glyphicon glyphicon-tag" style="font-size:0.75em"></span>
+              <span class="tagName">{{name}}</span>
+              <span class="badge" style="font-size: 0.899em">{{count}}</span>
+            </a>
+        </span>
+      {{else}}
+        <div class="container-fluid">
+          <h5 class="well well-sm signIn"> No Tags to show </h5>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+</template>
