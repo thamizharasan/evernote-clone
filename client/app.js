@@ -1,5 +1,6 @@
-Notes = new Meteor.Collection("notes");
-Tags = new Meteor.Collection("tags");
+Notebooks = new Mongo.Collection("notebooks");
+Notes = new Mongo.Collection("notes");
+Tags = new Mongo.Collection("tags");
 
 Meteor.startup(function () {
   Session.setDefault("selectedTag", null);
